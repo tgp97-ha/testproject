@@ -17,6 +17,8 @@ jobs:
       DB_PASSWORD: root
       JWT_SECRET: aOb7cxWqVbAIFOZ24CAjrLrOeeBYcrUmeqtBF0GOUYdFHMQfDudO7EKybyknJjhe
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
