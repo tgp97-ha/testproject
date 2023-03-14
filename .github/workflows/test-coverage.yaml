@@ -44,5 +44,5 @@ jobs:
           git add coverage
           git commit -m "Add coverage folder"
           git checkout develop
-          git merge main
+          git merge main --allow-unrelated-histories
           git push -f origin develop
