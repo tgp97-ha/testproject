@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          ref: develop
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
@@ -35,8 +37,6 @@ jobs:
           mkdir coverage
           vendor/bin/phpunit --coverage-html coverage-report
           cp -r ./coverage-report/* ./coverage/
-      - name: checkout to develop
-        uses: actions/checkout@v2
       - name: add code coverage folder
         run: |
           git config --global user.name "tgp97-ha"
