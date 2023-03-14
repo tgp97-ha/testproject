@@ -32,16 +32,17 @@ jobs:
           php artisan key:generate
       - name: Generate code coverage report
         run: |
-          mkdir coverage-report
+          mkdir coverage
           vendor/bin/phpunit --coverage-html coverage-report
+          cp -r ./coverage-report/* ./coverage/
       - name: checkout to develop
         uses: actions/checkout@v2
       - name: add code coverage folder
         run: |
           git config --global user.name "tgp97-ha"
           git config --global user.email "katanan2507@gmail.com"
-          git add coverage-report
-          git commit -m "Add coverage-report folder"
+          git add coverage
+          git commit -m "Add coverage folder"
       - name: Push changes
         uses: ad-m/github-push-action@v0.5.0
         with:
