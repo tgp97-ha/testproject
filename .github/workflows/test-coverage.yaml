@@ -39,12 +39,11 @@ jobs:
         run: |
           git config --global user.name "tgp97-ha"
           git config --global user.email "katanan2507@gmail.com"
+          git config --global --add safe.directory /github/workspace
           git add coverage
           git commit -m "Add coverage folder"
-          git config --global --add safe.directory /github/workspace
       - name: Push changes
         uses: ad-m/github-push-action@v0.5.0
         with:
           github_token: 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
           branch: develop
-        run: git config --global --add safe.directory /github/workspace
