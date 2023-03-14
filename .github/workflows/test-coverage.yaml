@@ -32,12 +32,10 @@ jobs:
           php artisan key:generate
       - name: Generate code coverage report
         run: |
-          mkdir -p build/logs
+          mkdir coverage-report
           vendor/bin/phpunit --coverage-html coverage-report
       - name: checkout to develop
         uses: actions/checkout@v2
-        with:
-            ref: develop
       - name: add code coverage folder
         run: |
           git config --global user.name "tgp97-ha"
