@@ -35,12 +35,14 @@ jobs:
           mkdir coverage
           vendor/bin/phpunit --coverage-html coverage-report
           cp -r ./coverage-report/* ./coverage/
-      - name: add code coverage folder
+      - name: config git
         run: |
           git config --global user.name "tgp97-ha"
           git config --global user.email "katanan2507@gmail.com"
           git config --global user.password "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"
           git config --global --add safe.directory /github/workspace
+      - name: add code coverage folder
+        run: |
           git fetch origin
           git add coverage
           git commit -m "Add coverage folder"
