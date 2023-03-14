@@ -42,10 +42,6 @@ jobs:
           git config --global --add safe.directory /github/workspace
           git add coverage
           git commit -m "Add coverage folder"
-          git checkout develop
-          git merge origin main
-      - name: Push changes
-        uses: ad-m/github-push-action@v0.5.0
-        with:
-          github_token: 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
-          branch: develop
+          git checkout origin develop
+          git merge main
+          git push -f origin develop
