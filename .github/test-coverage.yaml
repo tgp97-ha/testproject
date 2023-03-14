@@ -1,0 +1,56 @@
+name: Test and Code Coverage Report
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_DATABASE: routeinn_api
+          MYSQL_USER: admin
+          MYSQL_PASSWORD: root
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    env:
+      DB_HOST: 127.0.0.1
+      DB_PORT: 3306
+      DB_DATABASE: routeinn_api
+      DB_USERNAME: admin
+      DB_PASSWORD: root
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.0
+      - name: Install dependencies
+        run: composer install
+      - name: Generate code coverage report
+        run: |
+          mkdir -p build/logs
+          vendor/bin/phpunit --coverage-html coverage-report
+      - name: checkout to develop
+        uses: actions/checkout@v2
+        with:
+            ref: develop
+      - name: add code coverage folder
+        run: |
+          git config --global user.name "tgp97-ha"
+          git config --global user.email "katanan2507@gmail.com"
+          git add coverage-report
+          git commit -m "Add coverage-report folder"
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.5.0
+        with:
+          github_token: ${{ secrets.TOKEN }}
+          branch: develop
