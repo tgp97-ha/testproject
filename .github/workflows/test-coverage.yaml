@@ -48,4 +48,8 @@ jobs:
           git commit -m "Add coverage folder"
           git checkout develop
           git merge main --allow-unrelated-histories
-          git push -f origin develop
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.5.0
+        with:
+          github_token: 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
+          branch: develop
