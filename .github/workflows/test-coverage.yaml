@@ -39,6 +39,7 @@ jobs:
         run: |
           git config --global user.name "tgp97-ha"
           git config --global user.email "katanan2507@gmail.com"
+          git config --global user.password "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"
           git config --global --add safe.directory /github/workspace
           git fetch origin
           git add coverage
