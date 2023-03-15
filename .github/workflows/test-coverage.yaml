@@ -34,7 +34,7 @@ jobs:
         run: |
           mkdir coverage
           vendor/bin/phpunit --coverage-html coverage-report
-          cp -r ./coverage-report/* ./coverage/
+          cp -r ./coverage-report/* ./docs/
       - name: config git
         run: |
           git config --global --add safe.directory /github/workspace
