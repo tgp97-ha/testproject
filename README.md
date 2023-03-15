@@ -1,1 +1,1 @@
-<a href="https://tgp97-ha.github.io/testproject/">View the HTML page</a>
+<iframe src="https://raw.githubusercontent.com/tgp97-ha/testproject/develop/docs/index.html" height="600" width="800"></iframe>
