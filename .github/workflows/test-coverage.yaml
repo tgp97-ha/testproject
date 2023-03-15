@@ -47,7 +47,7 @@ jobs:
           git fetch origin
           git commit -m "Add coverage folder"
           git checkout develop
-          git merge main --allow-unrelated-histories
+          git merge -X main --allow-unrelated-histories
       - name: Config global
         run: git config --global --add safe.directory /github/workspace
       - name: Push changes
