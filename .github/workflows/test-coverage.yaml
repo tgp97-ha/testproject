@@ -44,6 +44,7 @@ jobs:
       - name: add code coverage folder
         run: |
           git add docs
+          git fetch origin
           git commit -m "Add coverage folder"
           git checkout develop
           git merge main --allow-unrelated-histories
